@@ -12,8 +12,9 @@ import 'vue-material-design-icons/styles.css'
 
 Vue.use(vOutsideEvents)
 Vue.use(VueAxios, axios)
-Vue.use(VueSocketio, 'http://127.0.0.1:3000')
+Vue.use(VueSocketio, 'http://tukerty.ru')
 
+console.log(process.env.NODE_ENV === 'development')
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

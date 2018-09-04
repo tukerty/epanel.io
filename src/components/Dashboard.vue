@@ -31,13 +31,13 @@ export default {
   },
   methods: {
     readTiles() {
-      this.axios.get("http://127.0.0.1:3000/tiles").then(result => {
+      this.axios.get("http://tukerty.ru/tiles").then(result => {
         this.tiles = result.data || [];
       });
     },
     submitEditing() {
       this.axios
-        .post("http://127.0.0.1:3000/tiles", {
+        .post("http://tukerty.ru/tiles", {
           tiles: this.tiles
         })
         .then(result => {
@@ -84,9 +84,6 @@ export default {
           flag =
             flag &&
             (a.x1 >= b.x2 || a.x2 <= b.x1 || b.y2 <= a.y1 || a.y2 <= b.y1);
-          if (flag === true) {
-            return flag;
-          }
         });
       } else if (e.event === "setPosition") {
         if (tile.positionX + e.x < 0 || tile.positionY + e.y < 0) {
@@ -151,14 +148,21 @@ export default {
         }
       };
       let inserted = false;
-      while (!inserted) {
-        if (this.checkOverlaps(newTile)) {
-          this.tiles.push(newTile);
-          inserted = true;
-        } else {
-          newTile.positionX += 1;
-          newTile.positionY += 1;
+      let i = 0;
+      while (!inserted && i < 100) {
+        for (let j = i; j >= 0; j--) {
+          if (!inserted) {
+            console.log(j, i-j);
+            if (this.checkOverlaps(newTile)) {
+              this.tiles.push(newTile);
+              inserted = true;
+            } else {
+              newTile.positionX = j;
+              newTile.positionY = i- j;
+            }
+          }
         }
+        i += 1;
       }
     },
     removeTile(tile) {

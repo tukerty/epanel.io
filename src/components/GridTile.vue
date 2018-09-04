@@ -60,6 +60,9 @@ export default {
   },
   watch: {
     editMode (){
+      if (this.tile.isNew && this.editMode == true){
+      this.customizeTile ()
+      }
       this.customizing = false
       this.tempSizeX = null
       this.tempSizeY = null
@@ -69,7 +72,7 @@ export default {
     window.addEventListener('mouseup', this.endDrag)
     window.addEventListener('dragend', this.endDrag)
     window.addEventListener('mousemove', this.doDrag)
-    if (this.tile.isNew){
+    if (this.tile.isNew && this.editMode){
       this.customizeTile ()
     }
   },
@@ -148,11 +151,11 @@ export default {
       this.customizing = true
       this.titleInput = this.tile.data.title
       this.typeInput = this.tile.data.type
-      if (this.tile.sizeX < 1){
-        this.tempSizeX = 1
+      if (this.tile.sizeX < 3){
+        this.tempSizeX = 3
       }
       if (this.tile.sizeY < 2){
-        this.tempSizeY = 1
+        this.tempSizeY = 3
       }
     },
     saveTile() {

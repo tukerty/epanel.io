@@ -1,66 +1,129 @@
 {
   "tiles": [
     {
-      "id": "mSb3qvIIs",
+      "id": "iVKdMeDPs",
       "positionX": 0,
       "positionY": 0,
-      "sizeX": 4,
-      "sizeY": 1,
-      "data": {
-        "title": "HTML Book: Whitespace",
-        "type": "Link",
-        "url": "http://htmlbook.ru/css/white-space"
-      }
-    },
-    {
-      "id": "jH7w5CE1i",
-      "positionX": 0,
-      "positionY": 1,
       "sizeX": 3,
       "sizeY": 1,
+      "isNew": false,
+      "isHighlighted": true,
       "data": {
-        "title": "Google",
+        "title": "TileManager",
         "type": "Link",
-        "url": "https://google.com"
+        "url": "http://tukerty.ru/tiles/"
       }
     },
     {
-      "id": "gWtGoXMZU",
-      "positionX": 4,
+      "id": "2dIqNzj0j",
+      "positionX": 0,
+      "positionY": 1,
+      "sizeX": 2,
+      "sizeY": 1,
+      "isNew": false,
+      "isHighlighted": true,
+      "data": {
+        "title": "",
+        "type": "Link",
+        "url": ""
+      }
+    },
+    {
+      "id": "OFS4U-6-0-",
+      "positionX": 0,
       "positionY": 2,
       "sizeX": 2,
       "sizeY": 1,
+      "isNew": false,
+      "isHighlighted": true,
       "data": {
-        "title": "Docker",
+        "title": "",
         "type": "Link",
-        "url": "https://docker.com"
-      },
-      "isNew": false
+        "url": ""
+      }
     },
     {
-      "id": "ivvQEJVyN",
+      "id": "tWT-R280k",
       "positionX": 3,
+      "positionY": 0,
+      "sizeX": 2,
+      "sizeY": 1,
+      "isNew": false,
+      "isHighlighted": true,
+      "data": {
+        "title": "",
+        "type": "Link",
+        "url": ""
+      }
+    },
+    {
+      "id": "82V5h8WfU",
+      "positionX": 2,
       "positionY": 1,
       "sizeX": 2,
       "sizeY": 1,
       "isNew": false,
+      "isHighlighted": true,
       "data": {
-        "title": "StarWars",
+        "title": "",
         "type": "Link",
-        "url": "http://starwars.com"
+        "url": ""
       }
     },
     {
-      "id": "K1uyY1C5X",
+      "id": "m0B3uqOsdy",
       "positionX": 0,
-      "positionY": 2,
-      "sizeX": 3,
+      "positionY": 3,
+      "sizeX": 2,
       "sizeY": 1,
       "isNew": false,
+      "isHighlighted": true,
       "data": {
-        "title": "StackOverflow",
+        "title": "",
         "type": "Link",
-        "url": "https://stackoverflow.com/"
+        "url": ""
+      }
+    },
+    {
+      "id": "LLKZURIyL",
+      "positionX": 2,
+      "positionY": 2,
+      "sizeX": 2,
+      "sizeY": 1,
+      "isNew": false,
+      "isHighlighted": true,
+      "data": {
+        "title": "",
+        "type": "Link",
+        "url": ""
+      }
+    },
+    {
+      "id": "V3qeeUaZ9f",
+      "positionX": 0,
+      "positionY": 4,
+      "sizeX": 2,
+      "sizeY": 1,
+      "isNew": false,
+      "isHighlighted": true,
+      "data": {
+        "title": "",
+        "type": "Link",
+        "url": ""
+      }
+    },
+    {
+      "id": "4MTB7xLdBY",
+      "positionX": 5,
+      "positionY": 0,
+      "sizeX": 2,
+      "sizeY": 1,
+      "isNew": false,
+      "isHighlighted": true,
+      "data": {
+        "title": "",
+        "type": "Link",
+        "url": ""
       }
     }
   ]
