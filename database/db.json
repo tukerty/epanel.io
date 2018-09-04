@@ -1,56 +1,67 @@
 {
   "tiles": [
     {
-      "type": "link",
-      "name": "Eureka",
-      "link": "https://google.com",
+      "id": "mSb3qvIIs",
       "positionX": 0,
       "positionY": 0,
-      "sizeX": 2,
+      "sizeX": 4,
       "sizeY": 1,
-      "id": "EfXE3Q5BA"
+      "data": {
+        "title": "HTML Book: Whitespace",
+        "type": "Link",
+        "url": "http://htmlbook.ru/css/white-space"
+      }
     },
     {
-      "type": "link",
-      "name": "Eureka",
-      "link": "https://google.com",
-      "positionX": 1,
+      "id": "jH7w5CE1i",
+      "positionX": 0,
+      "positionY": 1,
+      "sizeX": 3,
+      "sizeY": 1,
+      "data": {
+        "title": "Google",
+        "type": "Link",
+        "url": "https://google.com"
+      }
+    },
+    {
+      "id": "gWtGoXMZU",
+      "positionX": 4,
       "positionY": 2,
       "sizeX": 2,
       "sizeY": 1,
-      "id": "StT_7CvD6G"
+      "data": {
+        "title": "Docker",
+        "type": "Link",
+        "url": "https://docker.com"
+      },
+      "isNew": false
     },
     {
-      "type": "link",
-      "name": "Eureka",
-      "link": "https://google.com",
-      "positionX": 0,
-      "positionY": 1,
-      "sizeX": 1,
-      "sizeY": 1,
-      "id": "LBSzG_PQVi"
-    },
-    {
-      "type": "link",
-      "name": "Eureka",
-      "link": "https://google.com",
+      "id": "ivvQEJVyN",
       "positionX": 3,
-      "positionY": 0,
-      "sizeX": 8,
-      "sizeY": 3,
-      "id": "yrmn2Njcj4"
-    },
-    {
-      "type": "link",
-      "name": "Eureka",
-      "link": "https://google.com",
-      "positionX": 1,
       "positionY": 1,
       "sizeX": 2,
       "sizeY": 1,
-      "id": "TcuMuMx5uw"
+      "isNew": false,
+      "data": {
+        "title": "StarWars",
+        "type": "Link",
+        "url": "http://starwars.com"
+      }
+    },
+    {
+      "id": "K1uyY1C5X",
+      "positionX": 0,
+      "positionY": 2,
+      "sizeX": 3,
+      "sizeY": 1,
+      "isNew": false,
+      "data": {
+        "title": "StackOverflow",
+        "type": "Link",
+        "url": "https://stackoverflow.com/"
+      }
     }
-  ],
-  "user": {},
-  "count": 0
+  ]
 }

@@ -6,7 +6,7 @@
       </a> /
       <a href="">Environment</a>
     </div>
-    <searchbar/>
+    <searchbar @searchInput="data => $emit('searchInput', data)"/>
     <a @click="toggleEdit">
       <pencil-icon/>
     </a>
@@ -28,7 +28,8 @@ export default {
     PencilIcon
   },
   props: {
-    editMode: Boolean
+    editMode: Boolean,
+    searchQuery: String
   },
   data () {
     return {

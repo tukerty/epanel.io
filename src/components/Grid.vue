@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="grid-items">
-      <grid-tile v-for="tile in tiles" :key="tile.id" :tile="tile" :editMode="editMode" @setSize="e => setSize(e,tile)" @setPosition="e => setPosition(e,tile)" @removeTile="removeTile" />
+      <grid-tile v-for="tile in tiles" :key="tile.id" :searchQuery="searchQuery" :tile="tile" :editMode="editMode" @setSize="e => setSize(e,tile)" @setPosition="e => setPosition(e,tile)" @removeTile="removeTile" />
     </div>
   </div>
 </template>
@@ -35,7 +35,8 @@ export default {
   },
   props: {
     editMode: Boolean,
-    tiles: Array
+    tiles: Array,
+    searchQuery: String,
   },
   methods: {
     setSize (e, tile) {
@@ -78,7 +79,7 @@ export default {
   font-size: 0.75em;
 }
 .layout-frame-800-600 {
-  height: 550px;
+  height: 480px;
   width: 750px;
 }
 .layout-frame-800-600:after {
@@ -86,35 +87,35 @@ export default {
 }
 .layout-frame-1024-768 {
   border-bottom: none;
-  height: 718px;
+  height: 648px;
   width: 974px;
 }
 .layout-frame-1024-768:after {
   content: "1024x768";
 }
 .layout-frame-1366-768 {
-  height: 718px;
+  height: 648px;
   width: 1316px;
 }
 .layout-frame-1366-768:after {
   content: "1366x768";
 }
 .layout-frame-1440-900 {
-  height: 850px;
+  height: 780px;
   width: 1390px;
 }
 .layout-frame-1440-900:after {
   content: "1440x900";
 }
 .layout-frame-1920-1080 {
-  height: 1030px;
+  height: 960px;
   width: 1870px;
 }
 .layout-frame-1920-1080:after {
   content: "1920x1080";
 }
 .layout-frame-3840-2160 {
-  height: 3790px;
+  height: 3700px;
   width: 2110px;
 }
 .layout-frame-3840-2160:after {

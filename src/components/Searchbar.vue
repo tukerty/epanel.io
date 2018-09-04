@@ -1,6 +1,6 @@
 <template>
   <div class="searchbar">
-    <input type="text" class="searchbar-input">
+    <input v-model="searchQuery" type="text" @input="$emit('searchInput', searchQuery)"  class="searchbar-input">
     <magnify-icon />
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
   },
   data () {
     return {
-
+      searchQuery: ''
     }
   }
 }
