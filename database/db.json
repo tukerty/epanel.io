@@ -1,129 +1,83 @@
 {
   "tiles": [
     {
-      "id": "iVKdMeDPs",
+      "id": "8_13omZoe",
       "positionX": 0,
+      "positionY": 0,
+      "sizeX": 2,
+      "sizeY": 1,
+      "isNew": false,
+      "isHighlighted": true,
+      "type": "link",
+      "data": {
+        "title": "Bitbucket",
+        "url": "https://bitbucket.org/dashboard/overview",
+        "healthcheck": false,
+        "description": ""
+      }
+    },
+    {
+      "id": "wjGtzep1E",
+      "positionX": 1,
+      "positionY": 1,
+      "sizeX": 3,
+      "sizeY": 1,
+      "isNew": false,
+      "isHighlighted": true,
+      "type": "link",
+      "data": {
+        "title": "Google Music",
+        "url": "https://play.google.com/music/listen#/home",
+        "healthcheck": false,
+        "description": ""
+      }
+    },
+    {
+      "id": "8-huiaO_y",
+      "positionX": 0,
+      "positionY": 1,
+      "sizeX": 1,
+      "sizeY": 1,
+      "isNew": false,
+      "isHighlighted": true,
+      "type": "link",
+      "data": {
+        "title": "Jira",
+        "url": "https://jira.camirf.ru/",
+        "healthcheck": false,
+        "description": ""
+      }
+    },
+    {
+      "id": "3wlZfkMfp",
+      "positionX": 2,
       "positionY": 0,
       "sizeX": 3,
       "sizeY": 1,
       "isNew": false,
       "isHighlighted": true,
+      "type": "link",
       "data": {
-        "title": "TileManager",
-        "type": "Link",
-        "url": "http://tukerty.ru/tiles/"
+        "title": "Stoplight",
+        "url": "https://next.stoplight.io/projects",
+        "healthcheck": false,
+        "description": ""
       }
     },
     {
-      "id": "2dIqNzj0j",
-      "positionX": 0,
-      "positionY": 1,
-      "sizeX": 2,
-      "sizeY": 1,
-      "isNew": false,
-      "isHighlighted": true,
-      "data": {
-        "title": "",
-        "type": "Link",
-        "url": ""
-      }
-    },
-    {
-      "id": "OFS4U-6-0-",
+      "id": "C0KDvV3Bz",
       "positionX": 0,
       "positionY": 2,
-      "sizeX": 2,
+      "sizeX": 3,
       "sizeY": 1,
       "isNew": false,
       "isHighlighted": true,
+      "type": "link",
       "data": {
-        "title": "",
-        "type": "Link",
-        "url": ""
-      }
-    },
-    {
-      "id": "tWT-R280k",
-      "positionX": 3,
-      "positionY": 0,
-      "sizeX": 2,
-      "sizeY": 1,
-      "isNew": false,
-      "isHighlighted": true,
-      "data": {
-        "title": "",
-        "type": "Link",
-        "url": ""
-      }
-    },
-    {
-      "id": "82V5h8WfU",
-      "positionX": 2,
-      "positionY": 1,
-      "sizeX": 2,
-      "sizeY": 1,
-      "isNew": false,
-      "isHighlighted": true,
-      "data": {
-        "title": "",
-        "type": "Link",
-        "url": ""
-      }
-    },
-    {
-      "id": "m0B3uqOsdy",
-      "positionX": 0,
-      "positionY": 3,
-      "sizeX": 2,
-      "sizeY": 1,
-      "isNew": false,
-      "isHighlighted": true,
-      "data": {
-        "title": "",
-        "type": "Link",
-        "url": ""
-      }
-    },
-    {
-      "id": "LLKZURIyL",
-      "positionX": 2,
-      "positionY": 2,
-      "sizeX": 2,
-      "sizeY": 1,
-      "isNew": false,
-      "isHighlighted": true,
-      "data": {
-        "title": "",
-        "type": "Link",
-        "url": ""
-      }
-    },
-    {
-      "id": "V3qeeUaZ9f",
-      "positionX": 0,
-      "positionY": 4,
-      "sizeX": 2,
-      "sizeY": 1,
-      "isNew": false,
-      "isHighlighted": true,
-      "data": {
-        "title": "",
-        "type": "Link",
-        "url": ""
-      }
-    },
-    {
-      "id": "4MTB7xLdBY",
-      "positionX": 5,
-      "positionY": 0,
-      "sizeX": 2,
-      "sizeY": 1,
-      "isNew": false,
-      "isHighlighted": true,
-      "data": {
-        "title": "",
-        "type": "Link",
-        "url": ""
+        "title": "WebRTC Testing Server",
+        "url": "https://tukerty.ru/",
+        "healthcheck": false,
+        "description": "Sample kurento webrtc testing server"
       }
     }
   ]

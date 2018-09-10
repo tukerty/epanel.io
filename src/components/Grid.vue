@@ -17,18 +17,21 @@
       </div>
     </div>
     <div class="grid-items">
-      <grid-tile v-for="tile in tiles" :key="tile.id" :searchQuery="searchQuery" :tile="tile" :editMode="editMode" @setSize="e => setSize(e,tile)" @setPosition="e => setPosition(e,tile)" @removeTile="removeTile" />
+      <grid-tile-link v-if="tile.type=='link'" v-for="tile in tiles" :key="tile.id" :searchQuery="searchQuery" :tile="tile" :editMode="editMode" @setSize="e => setSize(e,tile)" @setPosition="e => setPosition(e,tile)" @removeTile="removeTile" />
+      <grid-tile-s-s-h-command v-if="tile.type=='ssh-command'" v-for="tile in tiles" :key="tile.id" :searchQuery="searchQuery" :tile="tile" :editMode="editMode" @setSize="e => setSize(e,tile)" @setPosition="e => setPosition(e,tile)" @removeTile="removeTile" />
     </div>
   </div>
 </template>
 
 <script>
-import GridTile from './GridTile'
+import GridTileLink from './GridTileLink'
+import GridTileSSHCommand from './GridTileSSHCommand'
 
 export default {
   name: 'Grid',
   components: {
-    GridTile
+    GridTileLink,
+    GridTileSSHCommand
   },
   data () {
     return {}

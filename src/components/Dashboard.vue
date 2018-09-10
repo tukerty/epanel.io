@@ -3,7 +3,7 @@
     <Sidebar/>
     <Navbar @toggleEdit="editMode = !editMode" :editMode="editMode" @searchInput="data => searchQuery = data" @submitEditing="submitEditing" />
     <Grid :searchQuery="searchQuery" :tiles="tiles" :editMode="editMode" @setPosition="setPosition" @setSize="setSize" @removeTile="removeTile" />
-    <tile-picker :editMode="editMode" @newTile="newTile" />
+    <tile-picker :editMode="editMode" @newTile="data => newTile(data)" />
   </div>
 </template>
 
@@ -30,14 +30,19 @@ export default {
     };
   },
   methods: {
+    readEnvs() {
+      this.axios.get("http://127.0.0.1:3000/envs").then(result => {
+        this.tiles = result.data || [];
+      });
+    },
     readTiles() {
-      this.axios.get("http://tukerty.ru/tiles").then(result => {
+      this.axios.get("http://127.0.0.1:3000/tiles").then(result => {
         this.tiles = result.data || [];
       });
     },
     submitEditing() {
       this.axios
-        .post("http://tukerty.ru/tiles", {
+        .post("http://127.0.0.1:3000/tiles", {
           tiles: this.tiles
         })
         .then(result => {
@@ -132,33 +137,57 @@ export default {
       }
       return flag;
     },
-    newTile() {
-      let newTile = {
-        id: shortid.generate(),
-        positionX: 0,
-        positionY: 0,
-        sizeX: 2,
-        sizeY: 1,
-        isNew: true,
-        isHighlighted: true,
-        data: {
-          title: "",
-          type: "Link",
-          url: ""
-        }
-      };
+    newTile(type) {
+      let newTile = {};
+      if (type == "link") {
+        newTile = {
+          id: shortid.generate(),
+          positionX: 0,
+          positionY: 0,
+          sizeX: 2,
+          sizeY: 1,
+          isNew: true,
+          isHighlighted: true,
+          type: "link",
+          data: {
+            title: "",
+            url: "",
+            healthcheck: false,
+            description: ""
+          }
+        };
+      } else {
+        newTile = {
+          id: shortid.generate(),
+          positionX: 0,
+          positionY: 0,
+          sizeX: 1,
+          sizeY: 1,
+          isNew: true,
+          isHighlighted: true,
+          type: "ssh-command",
+          data: {
+            title: "",
+            url: "",
+            username: "",
+            password: "",
+            command: "",
+            description: ""
+          }
+        };
+      }
       let inserted = false;
       let i = 0;
       while (!inserted && i < 100) {
         for (let j = i; j >= 0; j--) {
           if (!inserted) {
-            console.log(j, i-j);
+            console.log(j, i - j);
             if (this.checkOverlaps(newTile)) {
               this.tiles.push(newTile);
               inserted = true;
             } else {
               newTile.positionX = j;
-              newTile.positionY = i- j;
+              newTile.positionY = i - j;
             }
           }
         }

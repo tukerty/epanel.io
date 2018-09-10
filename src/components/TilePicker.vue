@@ -2,9 +2,13 @@
   <div class="tilepicker" :class="{'edit-mode': editMode}">
     <p class="tilepicker-header">Tiles Palette</p>
     <p class="tilepicker-subheader">Click to add tile</p>
-    <div class="tile-item" @click="addTile">
+    <div class="tile-item" @click="addTile('link')">
       <div class="tile"></div>
       <p class="tile-name">Link</p>
+    </div>
+    <div class="tile-item" @click="addTile('ssh-command')">
+      <div class="tile"></div>
+      <p class="tile-name">SSH command</p>
     </div>
   </div>
 </template>
@@ -24,8 +28,8 @@ export default {
     }
   },
   methods: {
-    addTile () {
-      this.$emit('newTile')
+    addTile (data) {
+      this.$emit('newTile', data)
     }
   }
 }

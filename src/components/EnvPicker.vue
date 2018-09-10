@@ -1,6 +1,6 @@
 <template>
   <div class="env-picker">
-      <div class="env" v-for="(env, index) in envs" :key="index">
+      <div class="env" v-for="(env, index) in envs" :key="index" @click="$emit('pickEnv', env)">
           <div class="env-name">{{env.name.slice(0,1)}}</div>
       </div>
       <div class="env plus">

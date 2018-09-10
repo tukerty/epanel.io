@@ -2,7 +2,7 @@
   <div class="navbar">
     <div class="breadcrumps">
       <a href="">
-        <strong>Company Name</strong>
+        <strong>Username</strong>
       </a> /
       <a href="">Environment</a>
     </div>
