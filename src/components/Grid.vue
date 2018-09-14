@@ -19,40 +19,43 @@
     <div class="grid-items">
       <grid-tile-link v-if="tile.type=='link'" v-for="tile in tiles" :key="tile.id" :searchQuery="searchQuery" :tile="tile" :editMode="editMode" @setSize="e => setSize(e,tile)" @setPosition="e => setPosition(e,tile)" @removeTile="removeTile" />
       <grid-tile-s-s-h-command v-if="tile.type=='ssh-command'" v-for="tile in tiles" :key="tile.id" :searchQuery="searchQuery" :tile="tile" :editMode="editMode" @setSize="e => setSize(e,tile)" @setPosition="e => setPosition(e,tile)" @removeTile="removeTile" />
+      <grid-tile-ping v-if="tile.type=='ping'" v-for="tile in tiles" :key="tile.id" :searchQuery="searchQuery" :tile="tile" :editMode="editMode" @setSize="e => setSize(e,tile)" @setPosition="e => setPosition(e,tile)" @removeTile="removeTile" />
     </div>
   </div>
 </template>
 
 <script>
-import GridTileLink from './GridTileLink'
-import GridTileSSHCommand from './GridTileSSHCommand'
+import GridTileLink from "./GridTileLink";
+import GridTileSSHCommand from "./GridTileSSHCommand";
+import GridTilePing from "./GridTilePing";
 
 export default {
-  name: 'Grid',
+  name: "Grid",
   components: {
     GridTileLink,
-    GridTileSSHCommand
+    GridTileSSHCommand,
+    GridTilePing
   },
-  data () {
-    return {}
+  data() {
+    return {};
   },
   props: {
     editMode: Boolean,
     tiles: Array,
-    searchQuery: String,
+    searchQuery: String
   },
   methods: {
-    setSize (e, tile) {
-      this.$emit('setSize', tile, e)
+    setSize(e, tile) {
+      this.$emit("setSize", tile, e);
     },
-    setPosition (e, tile) {
-      this.$emit('setPosition', tile, e)
+    setPosition(e, tile) {
+      this.$emit("setPosition", tile, e);
     },
-    removeTile (tile) {
-      this.$emit('removeTile', tile)
+    removeTile(tile) {
+      this.$emit("removeTile", tile);
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

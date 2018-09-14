@@ -17,9 +17,7 @@
       <div v-if="!customizing">
         <p class="tile-text-big">{{tile.data.title}}</p>
         <p class="tile-text-small tile-text-type">{{tile.type}}</p>
-        <div v-if="tile.sizeY + drag.offsetY > 1 ">
-          <p class="tile-text tile-text-big-description">{{tile.data.description}}</p>
-        </div>
+        <ping-chart @chart:update="renderChart()"/>
         <div class="tile-text-small tile-text-url"><p>{{tile.data.url}}</p><span v-if="tile.sizeX + drag.offsetX > 1 && tile.data.healthcheck"> | <p>200</p><div class="health-circle"></div></span></div>
       </div>
       <div class="customization" v-else>
@@ -27,10 +25,6 @@
         <input class="text-input" placeholder="" v-model="tile.data.title" />
         <p class="text-input-label">URL</p>
         <input class="text-input" placeholder="" v-model="tile.data.url" />
-        <p class="text-input-label">Healthcheck</p>
-        <input class="checkbox-input" type="checkbox" v-model="tile.data.healthcheck" />
-        <p class="text-input-label">Description</p>
-        <textarea class="text-input" maxlength="50" placeholder="" v-model="tile.data.description" />
       </div>
     </div>
   </div>
@@ -40,13 +34,15 @@
 import DeleteIcon from 'vue-material-design-icons/Delete.vue'
 import PencilIcon from 'vue-material-design-icons/Pencil.vue'
 import CheckIcon from 'vue-material-design-icons/Check.vue'
+import PingChart from './PingChart'
 
 export default {
-  name: 'GridTileLink',
+  name: 'GridTilePing',
   components: {
     DeleteIcon,
     PencilIcon,
-    CheckIcon
+    CheckIcon,
+    PingChart
   },
   data () {
     return {
@@ -162,8 +158,8 @@ export default {
       if (this.tile.sizeX < 3) {
         this.tempSizeX = 3
       }
-      if (this.tile.sizeY < 3) {
-        this.tempSizeY = 3
+      if (this.tile.sizeY < 2) {
+        this.tempSizeY = 2
       }
     },
     saveTile () {

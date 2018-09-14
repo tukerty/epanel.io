@@ -79,6 +79,22 @@
         "healthcheck": false,
         "description": "Sample kurento webrtc testing server"
       }
+    },
+    {
+      "id": "VkOq_IvbH",
+      "positionX": 0,
+      "positionY": 3,
+      "isNew": false,
+      "isHighlighted": true,
+      "sizeX": 4,
+      "sizeY": 3,
+      "type": "ping",
+      "data": {
+        "title": "Just Google ping test",
+        "url": "https://google.com",
+        "description": "This prooves my lack of fantasy",
+        "timings": []
+      }
     }
   ]
 }

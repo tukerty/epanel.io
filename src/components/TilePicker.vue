@@ -10,15 +10,16 @@
       <div class="tile"></div>
       <p class="tile-name">SSH command</p>
     </div>
+    <div class="tile-item" @click="addTile('ping')">
+      <div class="tile"></div>
+      <p class="tile-name">Ping time</p>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'TilePicker',
-  components: {
-
-  },
   props: {
     editMode: Boolean
   },

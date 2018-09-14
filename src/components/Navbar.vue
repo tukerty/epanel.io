@@ -39,7 +39,7 @@ export default {
     toggleEdit () {
       this.$emit('toggleEdit')
     },
-    submitEditing() {
+    submitEditing () {
       this.$emit('submitEditing')
     }
   }

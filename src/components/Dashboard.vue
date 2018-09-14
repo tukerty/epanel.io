@@ -31,18 +31,18 @@ export default {
   },
   methods: {
     readEnvs() {
-      this.axios.get("http://127.0.0.1:3000/envs").then(result => {
+      this.axios.get(process.env.ROOT_API + "/envs").then(result => {
         this.tiles = result.data || [];
       });
     },
     readTiles() {
-      this.axios.get("http://127.0.0.1:3000/tiles").then(result => {
+      this.axios.get(process.env.ROOT_API + "/tiles").then(result => {
         this.tiles = result.data || [];
       });
     },
     submitEditing() {
       this.axios
-        .post("http://127.0.0.1:3000/tiles", {
+        .post(process.env.ROOT_API + "/tiles", {
           tiles: this.tiles
         })
         .then(result => {
@@ -138,43 +138,51 @@ export default {
       return flag;
     },
     newTile(type) {
-      let newTile = {};
-      if (type == "link") {
-        newTile = {
-          id: shortid.generate(),
-          positionX: 0,
-          positionY: 0,
-          sizeX: 2,
-          sizeY: 1,
-          isNew: true,
-          isHighlighted: true,
-          type: "link",
-          data: {
+      let newTile = {
+        id: shortid.generate(),
+        positionX: 0,
+        positionY: 0,
+        isNew: true,
+        isHighlighted: true
+      };
+      switch (type) {
+        case "link":
+          newTile["sizeX"] = 2;
+          newTile["sizeY"] = 1;
+          newTile["type"] = "link";
+          newTile["data"] = {
             title: "",
             url: "",
             healthcheck: false,
             description: ""
-          }
-        };
-      } else {
-        newTile = {
-          id: shortid.generate(),
-          positionX: 0,
-          positionY: 0,
-          sizeX: 1,
-          sizeY: 1,
-          isNew: true,
-          isHighlighted: true,
-          type: "ssh-command",
-          data: {
+          };
+          break;
+        case "ssh-command":
+          newTile["sizeX"] = 1;
+          newTile["sizeY"] = 1;
+          newTile["type"] = "ssh-command";
+          newTile["data"] = {
             title: "",
             url: "",
             username: "",
             password: "",
             command: "",
             description: ""
-          }
-        };
+          };
+          break;
+        case "ping":
+          newTile["sizeX"] = 3;
+          newTile["sizeY"] = 2;
+          newTile["type"] = "ping";
+          newTile["data"] = {
+            title: "",
+            url: "",
+            timings: []
+          };
+          break;
+        default:
+          return false;
+          break;
       }
       let inserted = false;
       let i = 0;

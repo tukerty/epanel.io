@@ -1,18 +1,30 @@
 const express = require('express')
-const app = express()
-const server = require('http').Server(app);
-const io = require('socket.io')(server);
+const fs = require('fs')
+const https = require('https');
+const http = require('http');
 const low = require('lowdb')
 const cors = require('cors')
 const FileSync = require('lowdb/adapters/FileSync')
 const adapter = new FileSync('database/db.json')
 const db = low(adapter)
 const bodyParser = require('body-parser')
+const app = express()
+
+/* const certificate = fs.readFileSync( '/etc/letsencrypt/live/tukerty.ru/fullchain.pem' );
+const privateKey = fs.readFileSync( '/etc/letsencrypt/live/tukerty.ru/privkey.pem' );
+const server = https.createServer({ key: privateKey, cert: certificate }, app).listen(443);
+*/
+const server = http.createServer(app).listen(3000);
+const io = require('socket.io')(server);
+
+
+
 
 db.defaults({ tiles: [], envs: []})
 
 app.use(cors())
 app.use(bodyParser.json())
+app.use(express.static('dist'))
 
 io.on('connection', function (socket) {
     console.log('New Connection');
@@ -21,15 +33,15 @@ io.on('connection', function (socket) {
     });
 });
 
-app.get('http://127.0.0.1:3000/envs', (req, res) => {
+app.get('/api/envs', (req, res) => {
     res.send(db.get('tiles'))
 })
 
-app.get('http://127.0.0.1:3000/tiles', (req, res) => {
+app.get('/api/tiles', (req, res) => {
     res.send(db.get('tiles'))
 })
 
-app.post('http://127.0.0.1:3000/tiles', (req, res) => {
+app.post('/api/tiles', (req, res) => {
     try {
         db.set('tiles', req.body.tiles)
             .write()
@@ -40,7 +52,7 @@ app.post('http://127.0.0.1:3000/tiles', (req, res) => {
     }
 })
 
-app.delete('http://127.0.0.1:3000/tiles/:id', (req, res) => {
+app.delete('/api/tiles/:id', (req, res) => {
     console.log(req.params.id)
     try {
         db.get('tiles')
@@ -52,5 +64,3 @@ app.delete('http://127.0.0.1:3000/tiles/:id', (req, res) => {
         res.sendStatus(500)
     }
 })
-
-server.listen(3000, () => console.log('Example app listening on port 3000!'))

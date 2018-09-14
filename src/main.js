@@ -12,7 +12,7 @@ import 'vue-material-design-icons/styles.css'
 
 Vue.use(vOutsideEvents)
 Vue.use(VueAxios, axios)
-Vue.use(VueSocketio, 'http://127.0.0.1:3000')
+Vue.use(VueSocketio, process.env.ROOT_WS)
 
 Vue.config.productionTip = false
 

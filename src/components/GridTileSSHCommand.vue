@@ -41,18 +41,18 @@
 </template>
 
 <script>
-import DeleteIcon from "vue-material-design-icons/Delete.vue";
-import PencilIcon from "vue-material-design-icons/Pencil.vue";
-import CheckIcon from "vue-material-design-icons/Check.vue";
+import DeleteIcon from 'vue-material-design-icons/Delete.vue'
+import PencilIcon from 'vue-material-design-icons/Pencil.vue'
+import CheckIcon from 'vue-material-design-icons/Check.vue'
 
 export default {
-  name: "GridTileClock",
+  name: 'GridTileClock',
   components: {
     DeleteIcon,
     PencilIcon,
     CheckIcon
   },
-  data() {
+  data () {
     return {
       customizing: false,
       titleInput: null,
@@ -67,7 +67,7 @@ export default {
         startX: null,
         startY: null
       }
-    };
+    }
   },
   props: {
     editMode: Boolean,
@@ -75,140 +75,140 @@ export default {
     searchQuery: String
   },
   watch: {
-    editMode() {
-      if (this.tile.isNew && this.editMode == true) {
-        this.customizeTile();
+    editMode () {
+      if (this.tile.isNew && this.editMode === true) {
+        this.customizeTile()
       }
-      this.customizing = false;
-      this.tempSizeX = null;
-      this.tempSizeY = null;
+      this.customizing = false
+      this.tempSizeX = null
+      this.tempSizeY = null
     }
   },
-  created() {
-    window.addEventListener("mouseup", this.endDrag);
-    window.addEventListener("dragend", this.endDrag);
-    window.addEventListener("mousemove", this.doDrag);
+  created () {
+    window.addEventListener('mouseup', this.endDrag)
+    window.addEventListener('dragend', this.endDrag)
+    window.addEventListener('mousemove', this.doDrag)
     if (this.tile.isNew && this.editMode) {
-      this.customizeTile();
+      this.customizeTile()
     }
   },
-  destroyed() {
-    window.removeEventListener("mouseup", this.endDrag);
-    window.removeEventListener("dragend", this.endDrag);
-    window.removeEventListener("mousemove", this.doDrag);
+  destroyed () {
+    window.removeEventListener('mouseup', this.endDrag)
+    window.removeEventListener('dragend', this.endDrag)
+    window.removeEventListener('mousemove', this.doDrag)
   },
   methods: {
-    startResize(e) {
+    startResize (e) {
       if (this.editMode && e.button === 0 && !this.customizing) {
-        this.dragging = true;
-        this.resize = true;
-        this.move = false;
-        this.drag.startX = e.clientX;
-        this.drag.startY = e.clientY;
+        this.dragging = true
+        this.resize = true
+        this.move = false
+        this.drag.startX = e.clientX
+        this.drag.startY = e.clientY
       } else if (!this.customizing && e.button === 0) {
-        this.goToLink();
+        this.goToLink()
       }
     },
-    startMove(e) {
+    startMove (e) {
       if (this.editMode && e.button === 0 && !this.customizing) {
         if (
-          e.target.className !== "holder" &&
-          e.target.className !== "holder-icon"
+          e.target.className !== 'holder' &&
+          e.target.className !== 'holder-icon'
         ) {
-          this.dragging = true;
-          this.resize = false;
-          this.move = true;
-          this.drag.startX = e.clientX;
-          this.drag.startY = e.clientY;
+          this.dragging = true
+          this.resize = false
+          this.move = true
+          this.drag.startX = e.clientX
+          this.drag.startY = e.clientY
         }
       } else if (!this.customizing && e.button === 0) {
-        this.goToLink();
+        this.goToLink()
       }
     },
-    goToLink() {
-      window.open(this.tile.data.url, "_blank");
+    goToLink () {
+      window.open(this.tile.data.url, '_blank')
     },
-    doDrag(e) {
+    doDrag (e) {
       if (this.editMode && this.dragging) {
-        this.drag.offsetX = Math.round((e.clientX - this.drag.startX) / 95);
-        this.drag.offsetY = Math.round((e.clientY - this.drag.startY) / 95);
+        this.drag.offsetX = Math.round((e.clientX - this.drag.startX) / 95)
+        this.drag.offsetY = Math.round((e.clientY - this.drag.startY) / 95)
       }
     },
-    endDrag(e) {
+    endDrag (e) {
       if (this.editMode && this.dragging) {
         if (this.resize) {
-          this.$emit("setSize", {
-            event: "setSize",
+          this.$emit('setSize', {
+            event: 'setSize',
             x: this.drag.offsetX,
             y: this.drag.offsetY
-          });
+          })
         } else if (this.move) {
-          this.$emit("setPosition", {
-            event: "setPosition",
+          this.$emit('setPosition', {
+            event: 'setPosition',
             x: this.drag.offsetX,
             y: this.drag.offsetY
-          });
+          })
         }
-        this.drag.offsetX = null;
-        this.drag.offsetY = null;
-        this.drag.startX = null;
-        this.drag.startY = null;
-        this.dragging = false;
-        this.resize = false;
-        this.move = false;
+        this.drag.offsetX = null
+        this.drag.offsetY = null
+        this.drag.startX = null
+        this.drag.startY = null
+        this.dragging = false
+        this.resize = false
+        this.move = false
       }
     },
-    removeTile() {
-      this.$emit("removeTile", this.tile);
+    removeTile () {
+      this.$emit('removeTile', this.tile)
     },
-    customizeTile() {
-      this.customizing = true;
+    customizeTile () {
+      this.customizing = true
       if (this.tile.sizeX < 3) {
-        this.tempSizeX = 3;
+        this.tempSizeX = 3
       }
       if (this.tile.sizeY < 4) {
-        this.tempSizeY = 4;
+        this.tempSizeY = 4
       }
     },
-    saveTile() {
-      this.customizing = false;
-      this.tempSizeX = null;
-      this.tempSizeY = null;
-      this.tile.isNew = false;
+    saveTile () {
+      this.customizing = false
+      this.tempSizeX = null
+      this.tempSizeY = null
+      this.tile.isNew = false
     }
   },
   computed: {
-    isHighlighted() {
+    isHighlighted () {
       return this.tile.data.title
         .toLowerCase()
-        .includes(this.searchQuery.toLowerCase());
+        .includes(this.searchQuery.toLowerCase())
     },
-    position() {
+    position () {
       return {
         left:
           this.tile.positionX * 90 +
           this.tile.positionX * 5 +
           this.drag.offsetX * 95 * !this.resize +
-          "px",
+          'px',
         top:
           this.tile.positionY * 90 +
           this.tile.positionY * 5 +
           this.drag.offsetY * 95 * !this.resize +
-          "px",
+          'px',
         width:
           (this.tempSizeX || this.tile.sizeX) * 90 +
           ((this.tempSizeX || this.tile.sizeX) - 2) * 5 +
           this.drag.offsetX * 95 * this.resize +
-          "px",
+          'px',
         height:
           (this.tempSizeY || this.tile.sizeY) * 90 +
           ((this.tempSizeY || this.tile.sizeY) - 2) * 5 +
           this.drag.offsetY * 95 * this.resize +
-          "px"
-      };
+          'px'
+      }
     }
   }
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -360,7 +360,6 @@ input:focus {
      text-overflow: ellipsis;
     overflow: hidden;
 }
-
 
 .tile-content .tile-text-big-description{
   word-wrap: break-word;
